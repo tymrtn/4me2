@@ -1,0 +1,2 @@
+// Author node — placeholder
+export {};

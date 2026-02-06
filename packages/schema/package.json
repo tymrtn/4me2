@@ -1,0 +1,28 @@
+{
+  "name": "@4me2/schema",
+  "version": "0.1.0",
+  "description": "Canonical review types, validators, and JSON-LD context for 4me2",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

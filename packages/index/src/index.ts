@@ -1,0 +1,2 @@
+// Discovery index — placeholder
+export {};

@@ -1,0 +1,16 @@
+{
+  "name": "4me2",
+  "private": true,
+  "description": "User-owned reviews & POI contribution network. Export your reviews, sign them, sell access via x402 micropayments.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "clean": "pnpm -r clean"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}

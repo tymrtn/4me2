@@ -1,0 +1,26 @@
+{
+  "name": "@4me2/cli",
+  "version": "0.1.0",
+  "description": "CLI tool for importing, signing, and verifying reviews",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "4me2": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "echo 'CLI tested via e2e'",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@4me2/crypto": "workspace:*",
+    "@4me2/schema": "workspace:*",
+    "@4me2/takeout-parser": "workspace:*",
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.2.1",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}
