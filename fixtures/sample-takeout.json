@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.4194, 37.7749] },
+      "properties": {
+        "date": "2025-11-02T18:30:00.000Z",
+        "five_star_rating_published": 5,
+        "google_maps_url": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x0:0xee78edee1214fa1f",
+        "location": {
+          "name": "Golden Gate Bakery",
+          "address": "1029 Grant Ave, San Francisco, CA 94133, USA",
+          "country_code": "US"
+        },
+        "review_text_published": "Best egg tarts in the city. Warm out of the oven if you time the line right.",
+        "questions": [
+          { "question": "Food", "rating": 5 },
+          { "question": "Service", "rating": 4 },
+          { "question": "Atmosphere", "rating": 5 }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-122.2711, 37.8044] },
+      "properties": {
+        "date": "2026-01-15T02:10:00.000Z",
+        "five_star_rating_published": 4,
+        "google_maps_url": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x0:0xabc123def4567890",
+        "location": {
+          "name": "Oakland Coffee Works",
+          "address": "377 2nd St, Oakland, CA 94607, USA",
+          "country_code": "US"
+        },
+        "review_text_published": "Solid pour-over, quiet on weekday mornings.",
+        "questions": [
+          { "question": "Price per person", "selected_option": "$1-10" }
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-3.7169153, 40.4262536] },
+      "properties": {
+        "date": "2026-01-13T12:42:41.911551Z",
+        "five_star_rating_published": 4,
+        "google_maps_url": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x0:0x1a2b3c4d5e6f7081",
+        "location": {
+          "name": "DopiCo Specialty Coffee",
+          "address": "C. de Ferraz, 36, Madrid, Spain",
+          "country_code": "ES"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": { "type": "Point", "coordinates": [-73.9857, 40.7484] },
+      "properties": {
+        "date": "2024-06-20T15:00:00.000Z",
+        "five_star_rating_published": 3,
+        "google_maps_url": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x0:0x9f8e7d6c5b4a3921",
+        "Comment": "Review from a deleted place listing; text unavailable in export."
+      }
+    }
+  ]
+}

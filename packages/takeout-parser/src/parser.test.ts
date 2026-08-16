@@ -1,9 +1,14 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { parseTakeoutReviews, extractCid } from "./index.js";
 
-const TAKEOUT_PATH =
-  "/Users/tylermartin/Downloads/Takeout/Maps (your places)/Reviews.json";
+// Synthetic fixture in the real Google Takeout Reviews.json shape:
+// 4 features — one with sub-rating questions, one with a selected_option
+// question, one rating-only, one marked skipped via the Comment field.
+const TAKEOUT_PATH = fileURLToPath(
+  new URL("../../../fixtures/sample-takeout.json", import.meta.url),
+);
 
 describe("extractCid", () => {
   it("extracts CID from a standard Maps URL", () => {
@@ -19,13 +24,15 @@ describe("extractCid", () => {
 });
 
 describe("parseTakeoutReviews", () => {
-  it("parses real Takeout data", () => {
+  it("parses the fixture export", () => {
     const json = readFileSync(TAKEOUT_PATH, "utf-8");
     const result = parseTakeoutReviews(json);
 
-    expect(result.stats.total).toBe(103);
-    expect(result.stats.parsed).toBeGreaterThan(90);
-    expect(result.stats.skipped).toBe(7); // reviews with Comment field
+    expect(result.stats.total).toBe(4);
+    expect(result.stats.parsed).toBe(3);
+    expect(result.stats.skipped).toBe(1); // the review with a Comment field
+    expect(result.stats.withText).toBe(2);
+    expect(result.stats.withoutText).toBe(1);
     expect(result.reviews.length).toBe(result.stats.parsed);
     expect(result.errors.length).toBe(result.stats.skipped);
   });
@@ -62,7 +69,7 @@ describe("parseTakeoutReviews", () => {
     const withSubRatings = result.reviews.filter(
       (r) => r.additionalRatings.length > 0,
     );
-    expect(withSubRatings.length).toBeGreaterThan(10);
+    expect(withSubRatings.length).toBe(1);
 
     // Check categories are mapped correctly
     const allCategories = new Set(
@@ -82,7 +89,7 @@ describe("parseTakeoutReviews", () => {
     const withInfo = result.reviews.filter(
       (r) => r.additionalInfo.length > 0,
     );
-    expect(withInfo.length).toBeGreaterThan(5);
+    expect(withInfo.length).toBe(1);
 
     const allQuestions = new Set(
       withInfo.flatMap((r) => r.additionalInfo.map((ai) => ai.question)),
