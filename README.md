@@ -36,7 +36,7 @@ node packages/cli/dist/index.js import fixtures/sample-takeout.json -k author.ke
 node packages/cli/dist/index.js verify reviews -k author.key.json
 ```
 
-You should see `Verified 3 files: 3 valid, 0 invalid`. The fixture holds four entries: two reviews with text, one rating-only, and one that the parser deliberately skips because Takeout marked it incomplete. Each signed review is a JWT verifiable credential named by its content hash, and `manifest.json` lists everything under your DID.
+You should see `Verified 3 files: 3 valid, 0 invalid`. The fixture holds four entries: two reviews with text, one rating-only, and one that the parser deliberately skips because Takeout marked it incomplete. Each signed review is a small portable file carrying its own proof of authorship (in standards terms, a JWT verifiable credential), named by its content hash. `manifest.json` lists everything under your identity.
 
 ## Using your own reviews
 
@@ -49,7 +49,7 @@ Signed reviews are plain files. Host them anywhere; they verify against your pub
 ## How it works
 
 - **Export.** Google Takeout gives you your reviews as GeoJSON. The parser normalizes them to [schema.org/Review](https://schema.org/Review) objects with stable `sha256` content hashes.
-- **Sign.** Each review becomes a JWT verifiable credential signed with your Ed25519 key, bound to your `did:web` identity.
+- **Sign.** Each review gets a stamp proving you wrote it, tied to an identity that lives at a domain you control. Anyone can check the stamp; nobody can forge it. (In standards terms: a JWT verifiable credential, Ed25519-signed, under your `did:web` identifier.)
 - **Host.** Your domain, your server. Each author node is meant to be an independent endpoint no platform can revoke.
 - **Get paid** (in design). Agents request a review, receive HTTP 402 with payment requirements, pay in USDC via [x402](https://www.x402.org/), and get the content. Pricing is per-review and author-set.
 
