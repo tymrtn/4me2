@@ -2,6 +2,8 @@
 
 AI companies pay for human-written content now; the people who wrote it collect nothing. 4me2 routes that money to authors. It lifts the reviews you already wrote out of a Google Takeout export and turns them into assets on your own domain that AI agents pay to use, per request, fractions of a cent at a time. Setup happens once; after that the reviews just sit there, able to earn.
 
+The status quo is stranger than it sounds. There is no API for your own contributions: the only programmatic path to review data is Google's Places API, metered per request, capped at five reviews per place, and licensed so you cannot keep copies of what you wrote. One company holds the world's places knowledge (Yelp's 2024 antitrust suit against Google describes what happened to everyone else who tried), and anything AI systems need that much should have more than one door.
+
 Website: [x4me2.com](https://x4me2.com) · Why this exists: [antimoloch.org/research](https://antimoloch.org/research/)
 
 ## Status
