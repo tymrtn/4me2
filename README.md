@@ -1,6 +1,6 @@
 # 4me2 — user-owned reviews
 
-You wrote your reviews. 4me2 lets you take them back: export them from Google Takeout, cryptographically sign them under an identity you control, and host them on your own domain. The end goal is that AI agents pay you directly, per request, when they use your words.
+AI companies pay for human-written content now; the people who wrote it collect nothing. 4me2 routes that money to authors. It lifts the reviews you already wrote out of a Google Takeout export and turns them into assets on your own domain that AI agents pay to use, per request, fractions of a cent at a time. Setup happens once; after that the reviews just sit there, able to earn.
 
 Website: [x4me2.com](https://x4me2.com) · Why this exists: [antimoloch.org/research](https://antimoloch.org/research/)
 
@@ -49,7 +49,7 @@ Signed reviews are plain files. Host them anywhere; they verify against your pub
 ## How it works
 
 - **Export.** Google Takeout gives you your reviews as GeoJSON. The parser normalizes them to [schema.org/Review](https://schema.org/Review) objects with stable `sha256` content hashes.
-- **Sign.** Each review gets a stamp proving you wrote it, tied to an identity that lives at a domain you control. Anyone can check the stamp; nobody can forge it. (In standards terms: a JWT verifiable credential, Ed25519-signed, under your `did:web` identifier.)
+- **Prove.** The tool stamps each review so anyone can check you wrote it and nobody can forge it. You never touch a key ceremony; `keygen` runs once and everything after is automatic. (In standards terms: a JWT verifiable credential, Ed25519-signed, under your `did:web` identifier.)
 - **Host.** Your domain, your server. Each author node is meant to be an independent endpoint no platform can revoke.
 - **Get paid** (in design). Agents request a review, receive HTTP 402 with payment requirements, pay in USDC via [x402](https://www.x402.org/), and get the content. Pricing is per-review and author-set.
 
