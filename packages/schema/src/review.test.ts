@@ -1,11 +1,15 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { TakeoutCollectionSchema, ReviewSchema } from "./index.js";
 
-const TAKEOUT_PATH = "/Users/tylermartin/Downloads/Takeout/Maps (your places)/Reviews.json";
+// Synthetic fixture in the real Google Takeout Reviews.json shape.
+const TAKEOUT_PATH = fileURLToPath(
+  new URL("../../../fixtures/sample-takeout.json", import.meta.url),
+);
 
 describe("TakeoutCollectionSchema", () => {
-  it("parses real Google Takeout Reviews.json", () => {
+  it("parses a Takeout-shaped Reviews.json", () => {
     const raw = JSON.parse(readFileSync(TAKEOUT_PATH, "utf-8"));
     const result = TakeoutCollectionSchema.safeParse(raw);
 
@@ -14,7 +18,7 @@ describe("TakeoutCollectionSchema", () => {
     }
     expect(result.success).toBe(true);
     if (result.success) {
-      expect(result.data.features.length).toBeGreaterThan(50);
+      expect(result.data.features.length).toBe(4);
       expect(result.data.type).toBe("FeatureCollection");
     }
   });
